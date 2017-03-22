@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- basic styles -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/datepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/assets/css/ui.jqgrid.css" />
+    <link rel="stylesheet" href="/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+    <!-- diyou style -->
+    <link rel="stylesheet" href="/assets/css/dystyle.css" />
+    <link rel="stylesheet" href="/assets/css/news/news.css">
+</head>
+
+<body>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class="lighter blue">
+							<i class="icon-signal"></i>
+							平台运营总数据
+						</h4>
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="icon-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="infobox-container">
+                            <div class="space-6"></div>
+                            <div class="infobox infobox-green">
+                                <div class="infobox-chart">
+                                    <span class="f-s40 icon-bar-chart"></span>
+                                </div>
+                                <div class="infobox-data">
+                                    <span class="infobox-content">总投资金额</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="用户投资成功的资金总额" data-original-title="" title="">?</span>
+                                    <span class="infobox-data-number">￥<em class="big">${totalAmount}</em><em class="cl6">元</em></span>
+                                </div>
+                            </div>
+                            <div class="infobox infobox-blue">
+                                <div class="infobox-chart">
+                                    <span class="f-s40 icon-inbox"></span>
+                                </div>
+                                <div class="infobox-data">
+                                    <span class="infobox-content">总回款金额</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="满标复审通过后,借款人还款给投资人的总本息" data-original-title="" title="">?</span>
+                                    <span class="infobox-data-number">￥<em class="big">${totalAmount}</em><em class="cl6">元</em></span>
+                                </div>
+                            </div>
+                            <div class="infobox infobox-orange2">
+                                <div class="infobox-chart">
+                                    <span class="f-s40 icon-legal"></span>
+                                </div>
+                                <div class="infobox-data">
+                                    <span class="infobox-content">总借款标数量</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="系统借款标的总数量" data-original-title="" title="">?</span>
+                                    <span class="infobox-data-number"><em class="big">${totalAmount}</em><em class="cl6">个</em></span>
+                                </div>
+                            </div>
+                            <div class="infobox infobox-pink">
+                                <div class="infobox-chart">
+                                    <span class="f-s40 icon-group"></span>
+                                </div>
+                                <div class="infobox-data">
+                                    <span class="infobox-content">总用户数</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="系统用户总数" data-original-title="" title="">?</span>
+                                    <span class="infobox-data-number"><em class="big">${totalAmount}</em><em class="cl6">人</em></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr hr-20 hr-dotted"></div>
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class="lighter orange">
+							<i class="icon-signal"></i>
+							昨天统计
+						</h4>
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="icon-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+				<div class="widget-body">
+					<div class="infobox-container">
+						<div class="space-6"></div>
+						<div class="infobox infobox-green">
+							<div class="infobox-chart">
+								<span class="f-s40 icon-bar-chart"></span>
+							</div>
+							<div class="infobox-data">
+								<span class="infobox-content">昨日投资金额</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="昨日用户投资成功的资金总额" data-original-title="" title="">?</span>
+								<span class="infobox-data-number">￥<em class="big">${totalAmount}</em><em class="cl6">元</em></span>
+							</div>
+						</div>
+
+						<div class="infobox infobox-blue">
+							<div class="infobox-chart">
+								<span class="f-s40 icon-inbox"></span>
+							</div>
+							<div class="infobox-data">
+								<span class="infobox-content">昨日回款金额</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="昨日借款人还款给投资人的本息和" data-original-title="" title="">?</span>
+								<span class="infobox-data-number">￥<em class="big">${totalAmount}</em><em class="cl6">元</em></span>
+							</div>
+						</div>
+
+						<div class="infobox infobox-orange2">
+							<div class="infobox-chart">
+								<span class="f-s40 icon-legal"></span>
+							</div>
+							<div class="infobox-data">
+								<span class="infobox-content">昨日借款标数量</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="昨日借款成功的标数量" data-original-title="" title="">?</span>
+								<span class="infobox-data-number"><em class="big">${totalAmount}</em><em class="cl6">个</em></span>
+							</div>
+						</div>
+
+						<div class="infobox infobox-pink">
+							<div class="infobox-chart">
+								<span class="f-s40 icon-group"></span>
+							</div>
+							<div class="infobox-data">
+								<span class="infobox-content">昨日新增用户数</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="昨日注册成功的用户数" data-original-title="" title="">?</span>
+								<span class="infobox-data-number"><em class="big">${totalAmount}</em><em class="cl6">人</em></span>
+							</div>
+						</div>
+					</div>
+				</div>
+                </div>
+                <div class="hr hr-20 hr-dotted"></div>
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class="lighter pink">
+							<i class="icon-signal"></i>
+							上周统计
+						</h4>
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="icon-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="infobox-container">
+                            <div class="space-6"></div>
+                            <div class="infobox infobox-green">
+                                <div class="infobox-chart">
+                                    <span class="f-s40 icon-bar-chart"></span>
+                                </div>
+                                <div class="infobox-data">
+                                    <span class="infobox-content">上周投资金额</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="上周用户投标成功的资金总额" data-original-title="" title="">?</span>
+                                    <span class="infobox-data-number">￥<em class="big">${totalAmount}</em><em class="cl6">元</em></span>
+                                </div>
+                            </div>
+                            <div class="infobox infobox-blue">
+                                <div class="infobox-chart">
+                                    <span class="f-s40 icon-inbox"></span>
+                                </div>
+                                <div class="infobox-data">
+                                    <span class="infobox-content">上周回款金额</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="上周借款人还款给投资人的本息和" data-original-title="" title="">?</span>
+                                    <span class="infobox-data-number">￥<em class="big">${totalAmount}</em><em class="cl6">元</em></span>
+                                </div>
+                            </div>
+                            <div class="infobox infobox-orange2">
+                                <div class="infobox-chart">
+                                    <span class="f-s40 icon-legal"></span>
+                                </div>
+                                <div class="infobox-data">
+                                    <span class="infobox-content">上周借款标数量</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="上周借款成功的标数量" data-original-title="" title="">?</span>
+                                    <span class="infobox-data-number"><em class="big">${totalAmount}</em><em class="cl6">个</em></span>
+                                </div>
+                            </div>
+                            <div class="infobox infobox-pink">
+                                <div class="infobox-chart">
+                                    <span class="f-s40 icon-group"></span>
+                                </div>
+                                <div class="infobox-data">
+                                    <span class="infobox-content">上周新增用户数</span><span class="help-button btn" data-rel="popover" data-trigger="hover" data-placement="top" data-content="上周注册成功的用户数总和" data-original-title="" title="">?</span>
+                                    <span class="infobox-data-number"><em class="big">${test}</em><em class="cl6">人</em></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat widget-header-small">
+                        <h5>
+							<i class="icon-comments-alt"></i>
+							售后服务与建议
+						</h5>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <div class="clearfix dyService">
+                                <div>
+                                    <div class="item">
+                                        <h5>客服电话</h5>
+                                        <p>4008-363-969</p>
+                                    </div>
+                                    <div class="item">
+                                        <h5>客服QQ</h5>
+                                        <p>
+                                            <script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzkzODAyNDk3Ml8yMTgzNTJfNDAwODM2Mzk2OV8"></script>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <h5>工作时间</h5>
+                                        <p>周一至周五9:00-18:00</p>
+                                    </div>
+                                    <div class="item">
+                                        <h5>服务热线：</h5>
+                                        <p>4008-393-969（转8034）</p>
+                                        <p>4008-363-969（转8035）</p>
+                                        <p>0592-5951657(节假日值班热线)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr hr-dotted"></div>
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat widget-header-small">
+                        <h5>
+							<i class="icon-cogs"></i>
+							快速设置
+						</h5>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <div class="clearfix dyService">
+			                	<div class="widget-main no-padding">
+									<table class="table table-bordered table-striped">
+										<thead class="thin-border-bottom">
+											<tr>
+												<th>
+													<i class="icon-caret-right blue"></i>名称
+												</th>
+												<th>
+													<i class="icon-caret-right blue"></i>操作
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${menuList}" var="menu">
+											<tr>
+												<td><h5 class="green">${menu.name}</h5></td>
+												<td>
+													<a href="${menu.url}" class="red">修改&gt;</a>
+												</td>
+											</tr>
+											</c:forEach>     
+											<!-- <tr>
+												<td><h5 class="green">标种配置</h5></td>
+												<td>
+													<a href="loan/category/list" class="red">修改&gt;</a>
+												</td>
+											</tr>     
+											<tr>
+												<td><h5 class="green">借款费用配置</h5></td>
+												<td>
+													<a href="finance/loanfee/list" class="red">修改&gt;</a>
+												</td>
+											</tr>     
+											<tr>
+												<td><h5 class="green">网站基本配置</h5></td>
+												<td>
+													<a href="system/config/system" class="red">修改&gt;</a>
+												</td>
+											</tr>     
+											<tr>
+												<td><h5 class="green">客服信息配置</h5></td>
+												<td>
+													<a href="system/config/rightcontactus" class="red">修改&gt;</a>
+												</td>
+											</tr>     
+											<tr>
+												<td><h5 class="green">首页版式更换</h5></td>
+												<td>
+													<a href="system/format/choice" class="red">修改&gt;</a>
+												</td>
+											</tr>     
+											<tr>
+												<td><h5 class="green">广告banner更换</h5></td>
+												<td>
+													<a href="system/banner/list" class="red">修改&gt;</a>
+												</td>
+											</tr>  
+											<tr>
+												<td><h5 class="green">友链配置</h5></td>
+												<td>
+													<a href="content/friend/list" class="red">修改&gt;</a>
+												</td>
+											</tr>   -->              								
+										</tbody>
+									</table>
+								</div>
+							</div>
+					    </div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/assets/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="/js/diyou.js"></script>
+    <script type="text/javascript" src="/js/base.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/ace.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/layer/layer.min.js"></script>
+    <script type="text/javascript">
+    
+    diyou.use('detect', function(dy) {
+        dy.detect();
+    })
+    /* var link = <?php echo($domainremark['score'] + $domainverify['score'] + $pay_status['score'] + $sms_status['score'] + $config['score'] + $email['score'] + $site_name['score']); ?> ;*/
+    </script>
+</body>
+
+</html>

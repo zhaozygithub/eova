@@ -1,0 +1,20 @@
+/*
+ * @author:james;
+ * @date:2014-8-22;
+ * @update:2015-3-20;
+ * @updated by:james;
+ * @website:www.diyou.cn
+*/
+.ui_dygrid_view{height: 40px;line-height: 24px;color: #FFF;background: #87b87f;padding: 0;font-size: 15px;}
+.ui_dygrid_view .ui_dygrid_title{float: left;margin: 8px;}
+.ui_dygrid_htable{width:100%;border: 1px solid #e1e1e1!}
+.ui_dygrid_htable thead{background-color: #eff3f8;}
+.ui_dygrid_htable .ui_dygrid_labels{border-bottom: 0;background: #f2f2f2;background-image: -webkit-gradient(linear,left 0,left 100%,from(#f8f8f8),to(#ececec));background-image: -webkit-linear-gradient(top,#f8f8f8,0%,#ececec,100%);background-image: -moz-linear-gradient(top,#f8f8f8 0,#ececec 100%);background-image: linear-gradient(to bottom,#f8f8f8 0,#ececec 100%);background-repeat: repeat-x;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8',endColorstr='#ffececec',GradientType=0);padding: 0!important;border-left: 1px solid #e1e1e1!important;}
+.ui_dygrid_htable th{border-right: 1px solid #e1e1e1!important;text-align: left!important;height: 45px;line-height:45px;padding:0px 2px 0px 5px;
+font-size: 13px;color: #777;font-weight: bold;}
+.ui_dygrid_htable th.ui_th_column {overflow: hidden;white-space: nowrap;text-align: center;border-top: 0 none;border-bottom: 0 none;}
+.ui_dygrid_htable td{border: 1px solid #e1e1e1!important;text-align: left!important;height: 38px;line-height:38px;padding:0px 2px 0px 5px;
+font-size: 13px;color: #777;}
+.ui_dygrid_htable tr.active{background:#eff4f7}
+.pages ul li{list-style:none;float:left;}
+.pages ul li.active a{color:red}

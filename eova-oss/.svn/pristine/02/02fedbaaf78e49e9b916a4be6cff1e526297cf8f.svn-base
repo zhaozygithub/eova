@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>新增产品</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="renderer" content="webkit">
+<link rel="stylesheet" type="text/css"
+	href="/plugins/wangEditor/dist/css/wangEditor.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/plugins/jsoneditor/jsoneditor.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/plugins/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/plugins/easyui/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="/ui/icon/icon.css">
+
+<link rel="stylesheet" type="text/css" href="/ui/css/common.css">
+<link rel="stylesheet" type="text/css" href="/ui/eova/css/eova.css">
+
+<script type="text/javascript" src="/ui/js/jquery.min.js"></script>
+<script type="text/javascript" src="/ui/js/json2-min.js"></script>
+
+<script type="text/javascript" src="/ui/js/common.js"></script>
+<script type="text/javascript" src="/ui/js/string.js"></script>
+
+<script type="text/javascript"
+	src="/plugins/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="/plugins/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/ui/easy/jquery.datagrid.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="/plugins/nice/jquery.validator.css">
+<script type="text/javascript" src="/plugins/nice/jquery.validator.js"></script>
+<script type="text/javascript" src="/plugins/nice/zh-CN.js"></script>
+<link rel="stylesheet"
+	href="/plugins/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript"
+	src="/plugins/ztree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript"
+	src="/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/plugins/upload/jquery-upload.js"></script>
+
+<script type="text/javascript" src="/plugins/format/jsformat.js"></script>
+
+<script type="text/javascript" src="/ui/easy/easy.min.js"></script>
+<script type="text/javascript" src="/ui/eova/eova.js"></script>
+<script type="text/javascript" src="/ui/eova/src/eova.common.js"></script>
+
+<script>
+	// 全局JS常量配置
+	var IMG = "http://127.0.0.1:18080";
+	var FILE = "";
+</script>
+</head>
+<body>
+
+	<form id="updateFormproduct" name="updateFormproduct" method="post"
+		class="form">
+		<div class="eova-form">
+			<input type="hidden" name="id" value="30" />
+			<div class="eova-form-field" title="商品图片[img]"
+				style="width: 95.5%; height: 75px;">
+				<div class="eova-form-lbl red">商品图片:</div>
+				<div>
+					<div class="eova-img">
+						<input type="text" id="img" name="img" value="${product.img}"
+							style="width: 158px;" readonly="readonly"> <label
+							for="img_file"><i class="ei" title="点击选择图片"></i></label><br>
+						<img
+							src="http://127.0.0.1:18080/image/bucao/product/${product.img}"
+							style="height: 50px; max-width: 179px;" alt="请选择一张图片"><input
+							type="file" id="img_file" name="img_file" style="display: none;">
+					</div>
+					<script>
+						$(function() {
+
+							var $input = $('#img');
+
+							var htmlOptions = eval('({disable : false})');
+							if (htmlOptions.disable) {
+								// 灰色遮罩实现禁用
+								$input.parent().mask();
+							}
+
+							// init input file
+							$('.eova-file').each(
+									function() {
+										var offset = $(this).find(
+												'input[type=text]').offset();
+										$(this).find('input[type=file]').css({
+											left : offset.left - 1,
+											// top : offset.top-1,
+											width : $(this).width()
+										});
+									});
+
+							// 异步传图(动态绑定事件)
+							var myfun = function() {
+
+								var $this_file = $("#img_file");
+								console.log($this_file.val());
+								$input.val($this_file.val());
+								var reader = new FileReader();
+								var files = $this_file.prop('files');
+								reader.readAsDataURL(files[0]);
+								reader.onload = function(e) {
+									$this_file.parent().find('img').attr('src',
+											e.target.result);
+								}
+
+								$input.val("Loading...");
+
+								$('#img_file')
+										.upload(
+												{
+													action : '/upload/img?name=img_file&filedir=/image/bucao/product',
+													name : "img_file",
+													onsuccess : function(json) {
+														$input
+																.val(json.fileName);
+													}
+												});
+							};
+
+							$(document).on("change", "#img_file", myfun);
+
+						});
+					</script>
+				</div>
+			</div>
+			<fieldset style="margin: 10px">
+			<legend>产品信息</legend>
+				<div class="eova-form-field" title="产品类型[type]" style="">
+					<div class="eova-form-lbl red">产品类型:</div>
+					<div>
+						<div class="eova-combo" id="type" name="type"
+							value="${product.type}" url="/widget/comboJson/product-type"
+							data-options=" disable : false, multiple : false"></div>
+					</div>
+				</div>
+			
+
+			<div class="eova-form-field" title="分类[category]" style="">
+				<div class="eova-form-lbl">分类:</div>
+				<div>
+					<div class="eova-combo" id="category" name="category"
+						value="${product.category}"
+						url="/widget/comboJson/product-category"
+						data-options=" disable : false, multiple : false"></div>
+				</div>
+			</div>
+
+			<div class="eova-form-field" title="材料[stuff]" style="">
+				<div class="eova-form-lbl">材料:</div>
+				<div>
+					<div class="eova-combo" id="stuff" name="stuff"
+						value="${product.stuff}" url="/widget/comboJson/product-stuff"
+						data-options=" disable : false, multiple : false"></div>
+				</div>
+			</div>
+
+			<div class="eova-form-field" title="尺码[sizes]" style="">
+				<div class="eova-form-lbl">尺码:</div>
+				<div>
+					<div class="eova-combo" id="sizes" name="sizes"
+						value="${product.sizes}" url="/widget/comboJson/product-sizes"
+						data-options=" disable : false, multiple : false"></div>
+				</div>
+			</div>
+
+			<div class="eova-form-field" title="名称[name]" style="">
+				<div class="eova-form-lbl">名称:</div>
+				<div>
+					<div class="eova-text" id="name" name="name"
+						value="${product.name}" data-options=" disable : false"></div>
+				</div>
+			</div>
+
+			<div class="eova-form-field" title="试用单价[test_price]" style="">
+				<div class="eova-form-lbl red">试用单价:</div>
+				<div>
+					<div class="eova-text" id="test_price" name="test_price"
+						value="${product.test_price}" data-options=" disable : false"></div>
+				</div>
+			</div>
+
+			<div class="eova-form-field" title="商品单价[price]" style="">
+				<div class="eova-form-lbl red">商品单价:</div>
+				<div>
+					<div class="eova-text" id="price" name="price"
+						value="${product.price}" data-options=" disable : false"></div>
+				</div>
+			</div>
+</fieldset>
+
+
+<fieldset style="margin: 10px">
+<legend>积分情况</legend>
+			<div class="eova-form-field" title="消耗积分[cost_score]" style="">
+				<div class="eova-form-lbl red">消耗积分:</div>
+				<div>
+					<div class="eova-text" id="cost_score" name="cost_score"
+						value="${product.cost_score}" data-options=" disable : false"></div>
+				</div>
+			</div>
+
+			<div class="eova-form-field" title="奖励积分[score]" style="">
+				<div class="eova-form-lbl red">奖励积分:</div>
+				<div>
+					<div class="eova-text" id="score" name="score"
+						value="${product.score}" data-options=" disable : false"></div>
+				</div>
+			</div>
+
+			<div class="eova-form-field" title="库存[stock]" style="">
+				<div class="eova-form-lbl red">库存:</div>
+				<div>
+					<div class="eova-text" id="stock" name="stock"
+						value="${product.stock}" data-options=" disable : false"></div>
+				</div>
+			</div>
+</fieldset>
+
+<fieldset style="margin: 10px">
+<legend>时间：</legend>
+			<div class="eova-form-field" title="创建时间[create_time]" style="">
+				<div class="eova-form-lbl">创建时间:</div>
+				<div>
+					<div class="eova-time" id="create_time" name="create_time"
+						value="${product.create_time}"
+						data-options="format:'yyyy-MM-dd', disable : false"></div>
+				</div>
+			</div>
+
+			<div class="eova-form-field" title="更新时间[update_time]" style="">
+				<div class="eova-form-lbl red">更新时间:</div>
+				<div>
+					<div class="eova-time" id="update_time" name="update_time"
+						value="${product.update_time}"
+						data-options="format:'yyyy-MM-dd HH:mm:ss', disable : false"></div>
+				</div>
+			</div>
+			</fieldset>
+		</div>
+	</form>
+	<script>
+		$(function() {
+			var $form = $('#updateFormproduct');
+			$form.validator({
+				debug : false,
+				stopOnError : true,
+				focusInvalid : false,
+				showOk : false,
+				timely : 0,
+				msgMaker : false,
+				fields : {
+					img : {
+						rule : "商品图片:required;"
+					},
+					type : {
+						rule : "产品类型:required;"
+					},
+					test_price : {
+						rule : "试用单价:required;"
+					},
+					price : {
+						rule : "商品单价:required;"
+					},
+					cost_score : {
+						rule : "消耗积分:required;"
+					},
+					score : {
+						rule : "奖励积分:required;"
+					},
+					stock : {
+						rule : "库存:required;"
+					},
+					update_time : {
+						rule : "更新时间:required;"
+					},
+				}
+			});
+			$form.on("validation", $.validation);
+		});
+	</script>
+	<script type="text/javascript">
+		var $form = $('#updateFormproduct');
+
+		var submitNow = function($dialog, $widget, $pjq) {
+			$.post('/form/doUpdate/product', $.getFormParasObj($form),
+					function(result) {
+						if (result.success) {
+							$.slideMsg("修改产品成功！", $pjq);
+							$.widgetReLoad($widget);
+							$dialog.dialog('destroy');
+
+						} else {
+							$.alert($pjq, result.msg);
+						}
+					}, 'json');
+		};
+
+		var btnSaveCallback = function($dialog, $widget, $pjq) {
+			// nice validator
+			$form.isValid(function(isValied) {
+				if (isValied) {
+					submitNow($dialog, $widget, $pjq);
+				}
+			});
+		};
+	</script>
+
+
+	<script type="text/javascript"
+		src="/plugins/wangEditor/dist/js/wangEditor.min.js"></script>
+	<script type="text/javascript"
+		src="/plugins/jsoneditor/jsoneditor.min.js"></script>
+	<script>
+		//配置表情包
+		wangEditor.config.emotions = {
+			'default' : {
+				title : '默认',
+				data : '/plugins/wangEditor/static/emotions/default.data'
+			}
+		};
+		// 配置上传图片
+		wangEditor.config.uploadImgUrl = '/upload/editor/';
+	</script>
+
+	<script>
+		$(function() {
+			$('div[class="eova-text"]').eovatext();
+			$('div[class="eova-time"]').eovatime();
+			$('div[class="eova-auto"]').eovaauto();
+			$('div[class="eova-bool"]').eovabool();
+			$('div[class="eova-find"]').eovafind();
+			$('div[class="eova-combo"]').eovacombo();
+			$('div[class="eova-icon"]').eovaicon();
+		});
+	</script>
+</body>
+</html>

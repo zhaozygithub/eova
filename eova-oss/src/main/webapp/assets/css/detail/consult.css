@@ -1,0 +1,167 @@
+@charset "UTF-8";
+/***
+ *author:james;
+ *date:2014-10-24;
+ ***/
+/* line 14, ../../sass/public/mod/_method.scss */
+.consult-page .the-header, .consult-page .consult-list, .consult-page .consult-list dl dt, .consult-page .consult-list dl dd {
+  zoom: 1;
+}
+/* line 16, ../../sass/public/mod/_method.scss */
+.consult-page .the-header:after, .consult-page .consult-list:after, .consult-page .consult-list dl dt:after, .consult-page .consult-list dl dd:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/*分页*/
+/* line 4, ../../sass/detail/mod/_base.scss */
+.the-center {
+  width: 1250px;
+  margin: 0 auto;
+}
+
+/* line 8, ../../sass/detail/mod/_base.scss */
+.the-title {
+  height: 55px;
+  border-bottom: 1px solid #e2e2e2;
+  margin-top: 40px;
+}
+
+/* line 15, ../../sass/detail/mod/_base.scss */
+.consult-page .the-header ul {
+  float: right;
+}
+/* line 17, ../../sass/detail/mod/_base.scss */
+.consult-page .the-header ul li {
+  display: inline;
+  height: 55px;
+  float: left;
+  margin-left: 60px;
+  font: 16px/55px 'Microsoft yahei';
+}
+/* line 23, ../../sass/detail/mod/_base.scss */
+.consult-page .the-header ul li a {
+  display: block;
+  color: #333;
+}
+/* line 26, ../../sass/detail/mod/_base.scss */
+.consult-page .the-header ul li a.selected, .consult-page .the-header ul li a:hover {
+  border-bottom: 2px solid #2599d6;
+}
+/* line 32, ../../sass/detail/mod/_base.scss */
+.consult-page h2 {
+  color: #333333;
+  font-size: 28px;
+}
+/* line 35, ../../sass/detail/mod/_base.scss */
+.consult-page h2 span {
+  color: #0697da;
+  margin-right: 20px;
+}
+
+/* line 41, ../../sass/detail/mod/_base.scss */
+.pagenation {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: right;
+}
+/* line 45, ../../sass/detail/mod/_base.scss */
+.pagenation a, .pagenation span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
+  font: 14px/35px arial;
+  color: #333;
+  text-align: center;
+  margin-left: 10px;
+  background: #e8e8e8;
+}
+/* line 55, ../../sass/detail/mod/_base.scss */
+.pagenation a.on, .pagenation a:hover, .pagenation span.on, .pagenation span:hover {
+  background: #009ad7;
+  color: #fff;
+}
+/* line 59, ../../sass/detail/mod/_base.scss */
+.pagenation .page_all {
+  width: auto;
+  padding: 0 8px;
+}
+
+/*案例页面*/
+/* line 6, ../../sass/detail/consult.scss */
+.consult-page {
+  background: #fff;
+}
+/* line 8, ../../sass/detail/consult.scss */
+.consult-page .consult-bg {
+  background: url(images/casebg.jpg) no-repeat scroll center top;
+  height: 490px;
+}
+/* line 10, ../../sass/detail/consult.scss */
+.consult-page .consult-center {
+  width: 1180px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+/* line 14, ../../sass/detail/consult.scss */
+.consult-page .consult-list {
+  width: 1230px;
+}
+/* line 17, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl {
+  display: inline;
+  float: left;
+  width: 565px;
+  margin: 60px 50px 0 0;
+}
+/* line 24, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl dt .pic {
+  width: 165px;
+  float: left;
+}
+/* line 27, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl dt .txt-info {
+  width: 385px;
+  float: right;
+}
+/* line 30, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl dt .txt-info h2 {
+  font: 14px 'Microsoft yahei';
+  color: #333;
+}
+/* line 33, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl dt .txt-info p {
+  margin-top: 20px;
+  font: 12px/20px 'Microsoft yahei';
+  color: #888;
+}
+/* line 39, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl dd {
+  height: 20px;
+  padding: 10px 0;
+  margin-top: 15px;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+}
+/* line 46, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl dd .person-time {
+  display: inline;
+  float: left;
+  margin-right: 15px;
+  font: 12px/20px 'Microsoft yahei';
+  color: #888;
+}
+/* line 52, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl dd .person-time em {
+  font-size: 14px;
+}
+/* line 54, ../../sass/detail/consult.scss */
+.consult-page .consult-list dl dd .more {
+  float: right;
+  font: 12px/20px 'Microsoft yahei';
+}

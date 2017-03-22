@@ -1,0 +1,14 @@
+<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'${button.icon!}',plain:true"
+onclick="eova_update()">
+	${button.name!}
+</a>
+<script type="text/javascript">
+var eova_update = function() {
+	var $grid = $('#grid');
+    var row = $.getWidgetSelected($grid);
+	
+    if (isSelected($grid)) {
+        loadDialog($grid, '修改产品', '/product/update/'+row.id);
+    }
+};
+</script>
